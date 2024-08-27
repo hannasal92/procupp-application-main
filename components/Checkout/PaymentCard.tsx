@@ -57,7 +57,7 @@ const PaymentCard: React.FC<Props> = ({ setStep, shipping }) => {
       }
       await axios.post(
         `${process.env.NEXT_PUBLIC_PAYLOAD_SERVER}/api/orders/payment`,
-        { status: "working", data } // here you can pass anything so you can get on backend req.body
+        { status: "working", data } // here you can pass anything so you can get on backend req.body11
       );
 
       await client.request(CREATE_ORDER, {
