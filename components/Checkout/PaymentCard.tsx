@@ -46,9 +46,18 @@ const PaymentCard: React.FC<Props> = ({ setStep, shipping }) => {
 
   const handlePlaceOrder = async () => {
     try {
+      console.log(user)
+      const data = {
+        user: user,
+        address: selectedAddress?.address,
+        phone: selectedAddress?.number,
+        cardDetails : cardDetail,
+        delivery: shipping?.price,
+        total: cartTotal,
+      }
       await axios.post(
         `${process.env.NEXT_PUBLIC_PAYLOAD_SERVER}/api/orders/payment`,
-        { status: "working", ...cardDetail } // here you can pass anything so you can get on backend req.body
+        { status: "working", data } // here you can pass anything so you can get on backend req.body
       );
 
       await client.request(CREATE_ORDER, {
